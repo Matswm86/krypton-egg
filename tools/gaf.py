@@ -16,17 +16,17 @@ def chunks(d):
     _, _, n = struct.unpack_from("<HHH", d, 4)
     pos, out = 0x12, {}
     for _ in range(n):
-        tag = d[pos:pos + 4].decode()
+        tag = d[pos : pos + 4].decode()
         elen, ver, cnt, off, size = struct.unpack_from("<HHHII", d, pos + 4)
-        out[tag] = dict(count=cnt, off=off, size=size, ver=ver, extra=d[pos + 18:pos + elen])
+        out[tag] = dict(count=cnt, off=off, size=size, ver=ver, extra=d[pos + 18 : pos + elen])
         pos += elen
     return out
 
 
 def palette(d, c):
     head = 8 if c["ver"] == 0x10 else 10
-    raw = d[c["off"] + head:c["off"] + head + 768]
-    return [tuple(raw[i * 3:i * 3 + 3]) for i in range(256)]
+    raw = d[c["off"] + head : c["off"] + head + 768]
+    return [tuple(raw[i * 3 : i * 3 + 3]) for i in range(256)]
 
 
 def sprite(d, p, new):
