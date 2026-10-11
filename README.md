@@ -8,7 +8,8 @@ dodge the monsters that come through the door at the top.
 **No ads, no in-app purchases, no analytics.**
 
 <p align="center">
-  <img src="screenshots/level1.png" alt="Level 1 of Krypton Egg on Android: bricks on a teal floor between wooden walls, the racket at the bottom" width="640"/>
+  <img src="screenshots/level1.png" alt="Level 1 of Krypton Egg: bricks on a teal floor between wooden walls, the racket and ball at the bottom" width="640"/><br/>
+  <em>Level 1: bricks on a teal floor between wooden walls, the racket and ball at the bottom.</em>
 </p>
 
 ## Download
@@ -24,6 +25,38 @@ https://github.com/Matswm86/krypton-egg/releases/download/latest/krypton-egg.apk
 
 The APK is debug-signed with a fixed key, so a newer build installs over an
 older one.
+
+## What it does
+
+- Play all 100 levels, in 10 worlds of 10; each world you finish unlocks on
+  the PLAY menu.
+- Slide a finger anywhere on the screen to steer the racket, and tap to launch
+  the ball or fire.
+- Break plain, multi-hit, framed, stone, metal and exploding bricks, and catch
+  the 18 spells that fall from them: longer racket, laser, shield, fire ball
+  and more.
+- Shoot or dodge the monsters that come through the door at the top.
+- Put your name in the top-5 high-score table, which is kept on the phone.
+- Watch the original cutscenes and read the INFO pages that explain the spells
+  and the enemies.
+
+## How it works
+
+The game is written in GDScript for Godot 4.6 and drawn with the GL
+Compatibility renderer at the original 320 x 200 resolution, which the engine
+scales up to the phone screen. Python tools in `tools/` decode the original
+resource file from the CD into PNG sprite sheets, WAV samples, the level data
+and the FLI cutscenes, and the game loads those files directly. A small FLI
+player decodes the cutscene animations frame by frame and a palette shader
+colours them. The brick, spell and monster rules are my own GDScript, written
+from the sprites and the original help text. GitHub Actions exports the debug
+APK with Godot 4.6.2 and publishes it as the rolling `latest` release.
+
+## Status
+
+Version 0.1.0, playable from level 1 to level 100. Not done yet: the
+horde-attack stages, the final-monster battles and three of the eight
+cutscenes.
 
 ## Controls
 
